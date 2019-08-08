@@ -1,0 +1,44 @@
+//classe principal abaixo
+public class apples {
+	public static void main (String args[]) {
+		potpie potObject = new potpie (8, 05, 1990);
+		tuna tunaObject = new tuna("Anibal", potObject);
+		
+		System.out.println(tunaObject);
+	}
+}
+
+// segunda classe abaixo
+public class tuna {
+	private String name;
+	private potpie birthday;
+	
+	public tuna (String theName, potpie theDate) {
+		name = theName;
+		birthday = theDate;
+	}
+
+	public String toString() {
+		return String.format("My name is %s, my birthday is %s", name, birthday);
+	}
+}
+
+//terceira classe abaixo
+public class potpie {
+
+	private int ano;
+	private int mes;
+	private int dia;
+	
+	public potpie (int d, int m, int a) {
+		mes = m;
+		dia = d;
+		ano = a;
+		
+		
+	}
+	
+	public String toString() {
+		return String.format("%d/%d/%d", dia, mes, ano);
+	}
+}
