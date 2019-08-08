@@ -1,0 +1,38 @@
+// seguindo aula #50 do the new bosston, java for beginners
+
+// usando a Graphical User interface (GUI) for the first time
+
+// classe única abaixo
+
+import javax.swing.JOptionPane; 	
+
+// importando a "GUI"?
+
+public class apples {
+	public static void main (String args[]) {
+		
+    // input dialog box serve pra receber uma informação do usuário
+    
+		String fn = JOptionPane.showInputDialog("Enter first number");
+		String sn = JOptionPane.showInputDialog("Enter second number");
+    
+    // as duas linhas abaixo convertem uma String (fn, sn) em integers (num1, num2)
+    
+		
+		int num1 = Integer.parseInt(fn);
+		int num2 = Integer.parseInt(sn);
+		
+    // após a conversão, o programa entende que são números, então pode operá-los matematicamente
+    
+		int sum = num1 + num2;
+		
+    // a message dialog box exibe a informaçao
+    
+		JOptionPane.showMessageDialog(null, "The sum is " + sum, "Sum box", JOptionPane.PLAIN_MESSAGE);
+	
+  // primeiro termo (null= centro da tela) é a posição na tela
+  // segundo termo é o conteúdo da mensagem
+  // terceiro termo é o título da caixa
+  // não sei o que é plain message
+	}
+}
