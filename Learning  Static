@@ -1,0 +1,51 @@
+// baseado nas aulas #46 e #47 do the new boston Java for beginners
+/** aqui ele ensina Static, criando um clube e uma variável int static que conta 
+a quantidade de membros no clube */
+
+// classe principal abaixo
+
+public class apples {
+	public static void main (String args[]) {
+		tuna member1 = new tuna ("Megan","Fox");
+		tuna member2 = new tuna ("Natalie","Portman");
+		tuna member3 = new tuna ("Taylor","Swift");
+
+		System.out.println();
+		
+		// as linhas abaixo chamam os métodos por objeto
+		
+		System.out.println(member1.getFirst());
+		System.out.println(member1.getLast());
+		System.out.println(member1.getMembers());
+		
+		System.out.println();
+		// a linha abaixo chama o método pela classe,
+		// pq por ser Static, não há variação entre objetos
+		
+		System.out.println(tuna.getMembers());
+	}
+}
+
+// classe seundária abaixo
+
+public class tuna {
+	private String first;
+	private String last;
+	private static int members=0;
+	
+	public tuna (String fn, String ln) {
+	first = fn;
+	last = ln;
+	members+=1;
+	System.out.printf("Constructor for %s %s, members in the club %d\n", first, last, members);
+	}
+	public String getFirst() {
+		return first;
+	}
+	public String getLast() {
+		return last;
+	}
+	public static int getMembers() {
+		return members;
+	}
+}
