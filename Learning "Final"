@@ -1,0 +1,48 @@
+//baseado na aula #48 do the new boston, java for beginners
+
+//classe principal abaixo
+
+public class apples {
+	public static void main (String args[]) {
+		
+		//O número colocado no parâmetro de new tuna() 
+		// abaixo estabelecerá o valor final de NUMBER
+		
+		tuna tunaObject = new tuna(10);
+		
+		//cria-se um loop para trabalhar com NUMBER
+		
+		for (int i=0; i<5; i+=1) {
+			tunaObject.add();
+			System.out.printf("%s", tunaObject);
+			
+		}
+	
+	}
+}
+
+classe secundária abaixo
+
+public class tuna {
+	private int sum;
+	private final int NUMBER;
+	
+	
+	public tuna (int x) {
+	NUMBER = x;
+	}
+	public void add() {
+		sum+=NUMBER;
+	}
+	public String toString() {
+		return String.format("sum = %d\n", sum);
+	}
+}
+
+// output abaixo
+
+sum = 10
+sum = 20
+sum = 30
+sum = 40
+sum = 50
