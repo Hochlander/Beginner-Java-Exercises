@@ -1,0 +1,53 @@
+// seguindo aula #49 de the new boston java for beginners
+
+// classe principal abaixo
+
+public class apples {
+	public static void main (String args[]) {
+		
+		tuna tunaObject = new tuna();
+		potpie potObject = new potpie();
+		
+		tunaObject.eat();
+		potObject.eat();
+	
+	}
+}
+
+// superclasse abaixo
+
+public class food {
+
+	public void eat() {
+		System.out.println("I am the eat method");
+	}
+}
+
+// subclasse abaixo
+
+
+public class potpie extends food {
+
+
+}
+
+// subclasse com métodopróprio sobreposto (overridden(?)) abaixo
+
+public class tuna extends food {
+	
+	// o método abaixo se sobrepõe ao da classe "food"
+	
+	
+	public void eat() {
+		System.out.println("I am the new tuna method");
+		
+		// sem ele, o outpuut seria o mesmo de "food",
+		// e o mesmo de "potpie", que ainda herda de "food"
+	}
+}
+
+
+output abaixo
+
+I am the new tuna method
+I am the eat method
