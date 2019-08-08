@@ -1,0 +1,49 @@
+/** exercício que seguiu o tutorial #44 e #45 
+do thenew boston java for beginers para trabalhar com Enum, 
+range e o método .values do constructor */
+
+// classe principal
+import java.util.EnumSet;	
+
+public class apples {
+	public static void main (String args[]) {
+	//o loop for abaixo exibe todas as constantes criadas na classe tuna
+		for(tuna galera: tuna.values())
+				System.out.printf("	%s\t%s\t%s\n", galera, galera.getDesc(), galera.getYear());
+		
+		System.out.println("\n e agora para o subconjunto de constantes\n");
+		
+		// a linha abaixo chama um determinado subconjunto do array
+		
+		for (tuna galera: EnumSet.range(tuna.brenito, tuna.joao))
+			System.out.printf("	%s\t%s\t%s\n", galera, galera.getDesc(), galera.getYear());
+		
+	}
+}
+
+// classe secundária
+
+public enum tuna {
+
+	anibalito("ego", "1990"),
+	brenito("brother","1992"),
+	gier("cousin", "1995"),
+	haydee("grandma", "1943"),
+	joao("uncle", "1966"),
+	anita("cutie", "1986");
+	
+	private final String desc;
+	private final String year;
+	
+	tuna (String description, String birthday){
+		desc = description;
+		year = birthday;
+	}
+	
+	public String getDesc() {
+		return desc;
+	}
+	public String getYear() {
+		return year;
+	}
+}
