@@ -1,0 +1,89 @@
+/** aula the new boston #56: polymorphic arguments */
+
+classe principal abaixo
+
+class apples {
+	public static void main (String args[]) {
+		
+		fatty balito = new fatty();
+		food fo = new food();
+		food po = new potpie();
+		food tu = new tuna();
+		
+		//o método digest, na classe fatty, usa um objeto da classe food
+		//com isso, o método digest é associado ao método da classe food
+		// tuna e potpie, subclasses de food, podem ser chamadas como food,
+		//como foi feito na linha acima
+		
+			balito.digest(fo);
+			balito.digest(po);
+			balito.digest(tu);
+	}
+}
+
+//segunda classe abaixo
+
+
+public class tuna extends food {
+
+	void eat() {
+		System.out.println("this tuna is great");
+	}
+}
+
+//terceira classe abaixo
+public class potpie extends food {
+
+	void eat() {
+		System.out.println("this potpie is great");
+	}
+}
+
+//quarta classe abaixo
+public class food {
+
+	void eat() {
+		System.out.println("this food is great");
+	}	
+}
+
+
+//quinta classe abaixo
+
+
+public class fatty {
+	public void digest (food x) {
+		x.eat();
+	}
+
+}
+
+
+// output abaixo
+
+this food is great
+this potpie is great
+this tuna is great
+
+
+/** comentário final:
+para que possam "override" o método de sua superclasse (food), tuna e potpie.
+Em nosso caso, como o método principal não leva nenhum argumento, os métodos tuna e potpie também não podem.
+O mesmo é válido para o tipo de retorno: se o "super-método" retorna uma integer, os submétodos também devem retornar integers.
+quando o tipo de retorno é alterado, aí é "overload", ao invés de "override". */
+
+/** a mesma coisa se aplica ao escopo: sempre que se "override" um método, não se pode alterar seu "scope".
+tornar um método em private altera sua visibilidade, e ele não consegue mais ser chamado.*/
+
+/** a classe "food" é importante para herança e polimorfismo, mas é geral demais para que se crie um objeto dela própria.
+ao programar, a ideia é que "food" fique reservada para inheritance e polimorfismo, sem que se crie objetos dela própria.
+a forma de garantir que isso será assim é tornar food uma classe abstrata, o que significa que ela não poderá ser instanciada.
+
+Aplicado a nosso exercício, a classe food ficaria assim: */
+
+abstract public class food {
+
+	void eat() {
+		System.out.println("this food is great");
+	}	
+}
