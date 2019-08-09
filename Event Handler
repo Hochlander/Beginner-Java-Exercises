@@ -1,0 +1,96 @@
+/** criando um event handler a partir das aulas 
+#52, #53, #54 do the new boston java for beginners */
+
+//classe principal abaixo
+
+import javax.swing.JFrame; 	
+
+class apples {
+	public static void main (String args[]) {
+		
+    //cria-se objeto de tuna, close operation, tamanho e visibilidade
+    
+		tuna balito = new tuna();
+		balito.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		balito.setSize(275, 180);
+		balito.setVisible(true);
+	
+	}
+}
+
+
+//classe secundária abaixo
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JOptionPane;
+
+// extender de JFrame nos permite usar uma janela
+
+public class tuna extends JFrame {
+	
+	// daqui pra baixo, dá pra colocar coisas na janela que vamos criar
+	
+	private JTextField item1;
+	private JTextField item2;
+	private JTextField item3;
+	private JPasswordField passwordField;
+	
+	public tuna () {
+		super ("The tile bar");
+		setLayout(new FlowLayout());
+		
+		item1 = new JTextField (10);
+		add(item1);
+		
+		item2 = new JTextField ("enter text here");
+		add(item2);
+		
+		item3 = new JTextField ("uneditable", 20);
+		item3.setEditable(false);
+		add(item3);
+		
+		passwordField = new JPasswordField("mypass");
+		add(passwordField);
+    
+    //in order to handle events in Java, we need an event-handling class
+    // o método "Addd Action Listener" toma um objeto como seu argumento, então
+    // é necessário criar um objeto
+		
+		thehandler handler = new thehandler();
+		item1.addActionListener(handler);
+		item2.addActionListener(handler);
+		item3.addActionListener(handler);
+		passwordField.addActionListener(handler);
+		
+	}
+  
+  // the event-handling class needs to implement Action Listener
+  // a função do Action Listener é fazer algo após determinado evento
+	
+	private class thehandler implements ActionListener{
+		
+    // a linha abaixo chama o método que é executado automaticamente quando se chama a classe Action Listener
+    
+    public void actionPerformed (ActionEvent event) {
+			String string = "";
+			
+      // o get Source, abaixo, pega o que foi digitado e registra como item1,2,3,etc
+      
+			if(event.getSource()==item1)
+				string=String.format("field1: %s", event.getActionCommand());
+			else if (event.getSource()==item2)
+				string=String.format("field2: %s", event.getActionCommand());
+			else if (event.getSource()==item3)
+			string=String.format("field3: %s", event.getActionCommand());
+			else if (event.getSource()==passwordField)
+				string=String.format("passwordfield is %s", event.getActionCommand());
+			
+			JOptionPane.showMessageDialog(null, string);
+		}
+	}
+}
