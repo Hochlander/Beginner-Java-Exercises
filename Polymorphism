@@ -1,0 +1,59 @@
+/** seguindo aula #55 do the new boston sobre polimorfismo
+cria-se classe classe principal, que contém um array polimórfico
+este array chama métodos distintos de distintas classes*/
+
+//classe principal abaixo
+
+class apples {
+	public static void main (String args[]) {
+		
+    // a linha abaixo cria o array
+		food balito[] = new food[2];
+    
+    // a linha abaixo situa o metodo new potpie na primeira posição do array
+		balito[0]= new potpie();
+    
+    // a linha abaixo situa o metodo new tuna na segunda posição do array
+		balito[1]= new tuna();
+		
+    // a linha abaixo cria um loop que passa pelas duas posições do array, chamando seus respetivos métodos
+		for (int x=0; x<2; x+=1)
+			balito[x].eat();
+	}
+}
+
+// classe secundária abaixo
+
+
+public class tuna extends food {
+
+	void eat() {
+		System.out.println("this tuna is great");
+	}
+}
+
+
+// terceira classe abaixo
+
+public class potpie extends food {
+
+	void eat() {
+		System.out.println("this potpie is great");
+	}
+}
+
+//quarta classe abaixo
+
+
+public class food {
+
+	void eat() {
+		System.out.println("I am the eat method");
+	}	
+}
+
+
+//output abaixo
+
+this potpie is great
+this tuna is great
