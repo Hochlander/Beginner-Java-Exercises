@@ -1,0 +1,51 @@
+// Primeira atividade com o JFrame, seguindo a aula #52 
+// do thenewboston java for beginners
+
+//classe principal abaixo
+
+
+
+import javax.swing.JFrame; 
+// a linha acima importa o JFrame
+
+public class apples {
+	public static void main (String args[]) {
+		
+		tuna balito = new tuna();
+		//a linha abaixo serve pra fechar a janela, creio
+    balito.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// a linha abaixo ajusta o tamanho da janela
+    balito.setSize(275, 180);
+		// a linha abaixo deixa a janela visível
+    balito.setVisible(true);
+	
+	}
+}
+
+// classe secundária abaixo
+
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+// linhas acima importaram as ferramentas necessárias
+
+// linha abaixo extendeu a classe JFrame. JFrame é, portanto, uma superclasse
+
+public class tuna extends JFrame {
+	
+	private JLabel item1;
+	// item1 é uma instÂncia da classe JLabel, certo?
+  
+	public tuna () {
+  // definindo o título da barra na linha abaixo
+		super ("The tile bar");
+    // a linha abaixo define o Layout
+		setLayout(new FlowLayout());
+		
+		item1 = new JLabel ("this is a sentence");
+		item1.setToolTipText("This is gonna show up on hover");
+		add(item1);	
+	}
+}
+
