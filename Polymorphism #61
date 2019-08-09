@@ -1,0 +1,65 @@
+// aula do Bucky sobre polimorfismo, #61
+
+//classe principal
+
+public class apples {
+	public static void main (String []args) {
+		
+    
+    // a clase Dog e a classe Fish herdam de Animal, então seus objetos podem ser incluídos no array de "Animal"
+    
+		Animal[] thelist = new Animal[2];
+		Dog d = new Dog();
+		Fish f = new Fish();
+    
+    // a linha abaixo posiciona os objetos no array
+		
+		thelist[0] = d;
+		thelist[1] = f;
+		
+    // a linha abaixo cria um enhanced for loop que passa por todos os elementos do array
+    
+		for (Animal x : thelist) {
+			x.noise();
+		}
+	}
+
+}
+
+//classe secundária
+
+
+public class Dog extends Animal {
+	
+	public void noise() {
+		System.out.println("au-au-au");
+	}
+
+}
+
+//tericeira classe
+
+public class Fish extends Animal {
+
+	public void noise() {
+		System.out.println("glub-glub");
+	}
+
+}
+
+// quarta classe (superclasse)
+
+
+public class Animal {
+	public void noise () {
+		
+		System.out.println("Animals don't make noise");
+	}
+
+}
+
+//output abaixo
+
+au-au-au
+glub-glub
+
