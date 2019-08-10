@@ -1,0 +1,74 @@
+// the new boston, aula #63 java for beginners
+//trata-se de dois JButtons, um personaliado, e outro padrão. 
+// No personalizado, há uma imagem que muda quando passamos o mouse por cima.
+
+//classe principal
+
+import javax.swing.JFrame;
+	
+public class apples {
+	public static void main (String []args) {
+		
+		Gui go = new Gui();
+		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.setSize(300,200);
+		go.setVisible(true);
+	}
+
+}
+
+
+classe secundária
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+public class Gui extends JFrame {
+	private JButton reg;
+	private JButton custom;
+	
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// a linha abaixo pega o Layout padrão
+		setLayout(new FlowLayout());
+		
+		reg = new JButton ("reg button");
+		
+		// a linha abaixo adiciona o botão "reg" à janela que criamos
+		add(reg);
+		
+		Icon b = new ImageIcon(getClass().getResource("b.png"));
+		Icon x = new ImageIcon(getClass().getResource("x.png"));
+		
+		// a imagem abaixo fica como padrão no botão custom
+		custom = new JButton ("Custom", b);
+		
+		// a imagem abaixo aparece quando o mouse passa por cima do botão "custom"
+		custom.setRolloverIcon(x);
+		add(custom);
+		
+		// a classe abaixo gere os eventos quando clica-se no botão
+		HandlerClass handler = new HandlerClass();
+		reg.addActionListener(handler);
+		custom.addActionListener(handler);
+		
+	}
+	
+	// o método de Action Listener terá que ser "overridden"
+	private class HandlerClass implements ActionListener{
+		
+		public void actionPerformed(ActionEvent event) {
+			JOptionPane.showMessageDialog(null, String.format ("%s", event.getActionCommand()));
+		}
+	}
+	
+}
