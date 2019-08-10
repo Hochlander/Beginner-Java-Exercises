@@ -1,0 +1,80 @@
+// aula #65 do the new boston sobre check boxes
+
+// classe principal
+
+import javax.swing.JFrame;
+	
+public class apples {
+	public static void main (String []args) {
+		
+		Gui go = new Gui();
+		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.setSize(300,200);
+		go.setVisible(true);
+	}
+
+}
+
+
+classe secundária
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Gui extends JFrame {
+	
+	// a classe abaixo segura o texto
+	private JTextField tf;
+	private JCheckBox boldbox;
+	private JCheckBox italicbox;
+	
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// a linha abaixo pega o Layout padrão
+		setLayout(new FlowLayout());
+		
+		tf = new JTextField ("this is a sentence", 20);
+		
+		// a linha abaixo estabelece a fonte
+		tf.setFont(new Font("Serif", Font.PLAIN, 14));
+		
+		// a linha abaixo adiciona o botão "reg" à janela que criamos
+		add(tf);
+		
+		boldbox = new JCheckBox("bold");
+		italicbox = new JCheckBox("italic");
+		add(boldbox);
+		add(italicbox); 
+		
+		// a classe abaixo gere os eventos quando clica-se no botão
+		HandlerClass handler = new HandlerClass();
+		boldbox.addItemListener(handler);
+		italicbox.addItemListener(handler);
+		
+	}
+	
+	// o método de Item Listener terá que ser "overridden"
+	private class HandlerClass implements ItemListener{
+		
+		//quando se clica nas Check boxes, um Item Event acontece.
+		// a linha abaixo adiciona uma funcionalidade ao evento
+		public void itemStateChanged(ItemEvent event) {
+			Font font = null;
+			
+			if(boldbox.isSelected() && italicbox.isSelected())
+				font = new Font("Serif", Font.BOLD + Font.ITALIC, 14);
+			else if (boldbox.isSelected())
+				font = new Font("Serif", Font.BOLD, 14);
+			else if (italicbox.isSelected())
+				font = new Font("Serif", Font.ITALIC, 14);
+			tf.setFont(font);
+	
+			
+		}
+	}
+	
+}
