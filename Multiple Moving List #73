@@ -1,0 +1,93 @@
+// seguindo the new boston, aulas #72 e #73, com Gui JList e JButton
+
+// classe do JList
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class Gui extends JFrame {
+	
+	// o JList é uma lista que reage a um evento
+		
+	// criando as variáveis JList
+	private JList listaesq;
+	private JList listadir;
+	private JButton movimento;
+	
+	//cria-se o array que armazena os nomes das comidas;
+	private static String [] comidas = {"ovo", "pão", "leite", "doce", "feijão"};
+
+	
+	// é a hora de construir a janela
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// a linha abaixo pega o Layout padrão
+		setLayout(new FlowLayout());
+		
+		// agora, cria-se a lista com os parâmetros que deseja-se que o usuário veja
+		// O parâmetro de J Lists são sempre arrays de seleção
+		listaesq = new JList(comidas);
+		
+		// a linha abaixo estabelece quantas opções o usuário pode ver por default
+		listaesq.setVisibleRowCount(3);
+		
+		// a linha abaixo permite a seleção de mais de um item por vez
+		listaesq.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		
+		// 3 é menos que 5, então precisa de um ScrollPane
+		add(new JScrollPane(listaesq));
+		
+
+		//cria-se o botão de movimento
+		movimento = new JButton ("Mova pra lá -->");
+		
+		// adicionando uma Action Listener ao botão de movimento
+		movimento.addActionListener(
+				
+				//a linha abaixo implementa a classe ActionListener
+				new ActionListener() {
+					
+					// Action Listener pede o método action performed
+					public void actionPerformed (ActionEvent event) {
+						
+						// a linha cria um novo array a partir dos itens selecionados 
+						// da lista esq
+						
+						listadir.setListData(listaesq.getSelectedValues());
+												
+					}
+				}
+		);
+		
+		add(movimento);
+		
+		listadir = new JList();
+		listadir.setVisibleRowCount(3);
+		listadir.setFixedCellHeight(15);
+		listadir.setFixedCellWidth(100);
+		listadir.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		
+		add(new JScrollPane(listadir));
+		}
+	}
+
+
+// classe do método principal
+
+import javax.swing.JFrame;
+	
+public class apples {
+	public static void main (String []args) {
+		
+		Gui go = new Gui();
+		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.setSize(300,200);
+		go.setVisible(true);
+	}
+
+}
