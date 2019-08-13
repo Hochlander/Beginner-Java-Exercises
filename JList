@@ -1,0 +1,80 @@
+// the new boston, Java for beginners, aula #71
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class Gui extends JFrame {
+	
+	// o JList é uma lista que reage a um evento
+		
+	// criando a variável JList
+	private JList balito;
+	
+	// agora, cria-se dois arrays. O primeiro, armazena os nomes das cores;
+	private static String [] colornames = {"preto", "azul", "vermelho", "branco"};
+	
+	// o segundo array armazena as cores para o computador entender
+	private Color[] colors = {Color.BLACK, Color.BLUE, Color.RED, Color.WHITE};
+	
+	
+	// é a hora de construir a janela
+	
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// a linha abaixo pega o Layout padrão
+		setLayout(new FlowLayout());
+		
+		// agora, cria-se a lista com os parâmetros que deseja-se que o usuáro veja
+		// O par}âmetro de JComboBox é um array de seleção
+		balito = new JList(colornames);
+		
+		// a linha abaixo estabelece quantas opções o usuário pode ver por default
+		balito.setVisibleRowCount(4);
+		
+		// a linha abaixo restringe a seleção a um item por vez
+		balito.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		add(new JScrollPane(balito));
+		
+
+		
+		
+		
+		// adicionando uma Selection Listener ao JList
+		balito.addListSelectionListener(
+				
+				//a linha abaixo implementa a classe ItemListener
+				new ListSelectionListener() {
+					
+					// Item Listener pede o método value changed
+					public void valueChanged (ListSelectionEvent event) {
+						
+						// a linha abaixo programa a reação ao evento
+						getContentPane().setBackground(colors[balito.getSelectedIndex()]);						
+					}
+				}
+		);
+		
+		}
+	}
+  
+  
+// classe com método principal abaixo
+
+import javax.swing.JFrame;
+	
+public class apples {
+	public static void main (String []args) {
+		
+		Gui go = new Gui();
+		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.setSize(300,200);
+		go.setVisible(true);
+	}
+
+}
