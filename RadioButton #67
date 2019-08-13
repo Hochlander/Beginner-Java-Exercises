@@ -1,0 +1,115 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Gui extends JFrame {
+	
+	// a classe abaixo segura o texto
+	private JTextField tf;
+	
+	// as linhas abaixo dão nomes a cada tipo de fonte
+	// (que ainda não têm valor atribuído)
+	private Font pf;
+	private Font bf;
+	private Font itf;
+	private Font bif;
+	
+	// as linhas abaixo criam os botões para ser associados
+	// com as variáveis de fonte criadas acima
+	
+	private JRadioButton pb;
+	private JRadioButton bb;
+	private JRadioButton itb;
+	private JRadioButton bib;
+	
+	// a linha abaixo cria o botão de grupo, no qual só um 
+	// pode estar acionado a cada vez
+
+	private ButtonGroup group;
+	
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// a linha abaixo pega o Layout padrão
+		setLayout(new FlowLayout());
+		
+		tf = new JTextField ("qual será minha fonte?", 20);
+				
+		// a linha abaixo adiciona o texto à caixa que criamos
+		add(tf);
+		
+		// a linha abaixo associa botões às fontes
+		pb = new JRadioButton("plain", true);
+		
+		// por se tratar de JButton, onde só um pode ficar apertado por vez,
+		// só uma das afirmações sobre botões pode ser verdadeira como default
+		// como o "plain" já é verdadeiro, todos os que vêm abaixo têm que ser falsos
+		
+		bb = new JRadioButton("bold", false);
+		itb = new JRadioButton("italic", false);
+		bib = new JRadioButton("bold and italic", false);
+		
+		// as linhas abaixo adicionam os botões criados à parte visual
+		add (pb);
+		add (bb);
+		add (itb);
+		add (bib);
+	
+		// a linha abaixo é um construtor agrupa os botões no "Button Group"
+		group = new ButtonGroup();
+		
+		//adicionando botões ao grupo:
+		group.add(pb);
+		group.add(bb);
+		group.add(itb);
+		group.add(bib);
+		
+		// as linhas abaixo atribuem, finalmente, características aos 
+		// objetos de fonte criados acima
+		pf = new Font ("Serif", Font.PLAIN, 14);
+		bf = new Font ("Serif", Font.BOLD, 14);
+		itf = new Font ("Serif", Font.ITALIC, 14);
+		bif = new Font ("Serif", Font.BOLD + Font.ITALIC, 14);
+		
+		// a linha abaixo estabelece "plain" como default
+		tf.setFont(pf);
+		
+		
+		
+		// o método Item Listener toma o objeto da HAndlerClass como parâmetro
+		// quando o evento acontece, portanto, chama-se a HandlerClass
+		pb.addItemListener(new HandlerClass(pf));
+		bb.addItemListener(new HandlerClass(bf));
+		itb.addItemListener(new HandlerClass(itf));
+		bib.addItemListener(new HandlerClass(bif));
+	
+		
+	}
+	
+	// o método de Item Listener terá que ser "overridden"
+	private class HandlerClass implements ItemListener{
+		
+		// a linha abaixo cria uma variável da HandlerClass
+		private Font font;
+		
+		// agora, cria-se o construtor que se usou lá em cima
+		// o construtor da HandlerClass usa uma fonte como objeto
+		public HandlerClass (Font f) {
+			font = f;
+		}
+		
+		// a linha abaixo é o que ocorre quando o evento acontece
+		// este (font) entre parênteses é o parâmetro que conecta 
+		// o clique a todas as configurações anteriores para alteraçã de fonte
+		public void itemStateChanged(ItemEvent event) {
+			tf.setFont(font);
+		
+	
+	
+			
+		}
+	}
+	
+}
