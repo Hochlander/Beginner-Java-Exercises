@@ -1,0 +1,70 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Gui extends JFrame {
+	
+	// o JComboBox te dá uma lista de figuras para escolher, e a que você escolhe
+	// é a que aparece na sua tela
+	
+	// a variável JComboBox é a própria DropList
+	private JComboBox balito;
+	
+	// as figuras são chamadas de JLabel em Java
+	private JLabel picture;
+	
+	// agora, cria-se dois arrays. O primeiro, armazena os nomes das figuas;
+	private static String [] filename = {b.png, x.png};
+	
+	// o segundo array armazena os próprios arquivos de figuras
+	private Icon[] pics = {new ImageIcon(getClass().getResource(filename[0])), new ImageIcon(getClass().getResource(filename[1]))};
+	
+	// é a hora dos construtores
+	
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// a linha abaixo pega o Layout padrão
+		setLayout(new FlowLayout());
+		
+		// agora, o que se fará é criar uma "dropdown box", com os 
+		// nomes dos arquivos em uma lista para seleção. 
+		// O par}âmetro de JComboBox é um array de seleção
+		balito = new JComboBox(filename);
+		
+
+		
+		
+		
+		// Normalmente, o método Item Listener toma o objeto da HAndlerClass como parâmetro.
+		// Nesse caso, teríamosque criar o objeto handler, e depois sua classe.
+		// aqui, porém, se criará uma anonymous innerclass
+		
+		balito.addItemListener(
+				//a linha abaixo implementa a classe ItemListener
+				new ItemListener() {
+					
+					// Item Listener pede o método State changed
+					public void itemStateChanged (ItemEvent event) {
+						
+						// a linha abaixo programa a reação ao evento
+						if(event.getStateChange ()== ItemEvent.SELECTED)
+							picture.setIcon(pics[balito.getSelectedIndex()]);
+					}
+				}
+		);
+		
+		add (balito);
+		
+		// a linha abaixxo estabelece uma imagem como default
+		picture = new JLabel(pics[0]);
+		
+		// a figura estabelecida acima é adicionada à exibição
+		add(picture);
+	
+
+		
+		}
+	}
