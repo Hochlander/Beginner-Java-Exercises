@@ -1,0 +1,25 @@
+// seguindo the new boston, aula #79 Java for beginners
+// criando uma aruivo a prtir do Eclipse. É sensacional
+
+// classe principal abaixo
+import java.util.*;
+		
+// criando um aarquivo pelo java
+
+class apples {
+		public static void main (String []args) {
+		
+			// primeiro passo é fazer um vaariável Formatter
+			final Formatter balito;
+			
+			try {
+				// a linha abaixo instancia a variável Formatter e a constrói
+			balito = new Formatter ("C:\\Users\\Lenovo G40\\Documents\\exercícios de programação\\Te_Criei.text");
+			System.out.println("vocÊ criou um documento");
+			}
+			
+			catch (Exception e) {
+				System.out.println("houve um erro");
+			}			
+		}
+}
