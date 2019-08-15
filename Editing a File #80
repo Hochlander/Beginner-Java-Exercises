@@ -1,0 +1,51 @@
+// seguindo thenewboston, JAva for beginners, aula #80
+// criando e editando um documento a partir do Eclipse
+
+// classe principal abaixo
+
+class apples {
+		public static void main (String []args) {
+		
+			// instancindo a classe createfile e a construindo
+			createfile g = new createfile();
+			
+			// agora, chama-se os três métodos de createfile
+			g.OpenFile();
+			g.addRecords();
+			g.closeFile();
+						
+		}
+}
+
+// classe secundária abaixo
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class createfile {
+
+	private Formatter balito;
+	
+	//método para abrir um arquivo
+	public void OpenFile() {
+		try {
+			balito = new Formatter ("C:\\Users\\Lenovo G40\\Documents\\exercícios de programação\\Te_Formatei.text");
+		}
+		
+		catch (Exception e) {
+			System.out.println("houve um erro");
+		}
+	}
+	
+	//o método abaixo adiciona conteúdo ao arquivo criado
+	public void addRecords() {
+		balito.format("%s,%s,%s", "93 ", "ganhamos ", "Paulistão");
+	}
+	
+	// o método abaixo fecha o arquivo
+	public void closeFile() {
+		balito.close();
+	}
+	
+}
