@@ -1,0 +1,31 @@
+// seguindo the new boston, aula #78
+
+// classe única abaixo
+
+import java.io.File;
+		
+class apples {
+		public static void main (String []args) {
+		
+			// a classe "files" não cria arqquivos, mas informa sobre sua existência,
+			// tamanho, caminho, etc.
+			
+			// abaixo, será testada a existência de um arquivo
+			
+			// a linha abaixo cria a variável do arquivo e dá nome a ela
+			File x = new File ("C:\\Users\\Lenovo G40\\Documents\\exercícios de programação\\Vinishow");
+			
+			// as linhas abaixo testam
+			if(x.exists())
+				System.out.println(x.getName() + " existe!");
+				
+				else
+					System.out.println(x.getName() + " não achamos!");
+			
+		}
+	
+}
+
+// output abaixo
+
+Vinishownão achamos!
