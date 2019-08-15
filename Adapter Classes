@@ -1,0 +1,78 @@
+// seguindo the new boston, java for beginners. aula #77
+
+// classe secundária abaixo
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Gui extends JFrame {
+	
+	// quando você herda de uma "Adapter Class", você só tem que override os métodos 
+	// que vocÊ precisa, e não todos os métodos da interface, ou da classe, 
+	// como foi o caso dos Mouse Events #76
+	
+	
+		
+	// JPanel cria a caixa/janela; JLabel cria a barra de status que vai ficar embaixo
+	private String detalhes;
+	private JLabel statusbar;
+	
+	
+	// é a hora de construir a janela
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		//as linhas abaixo definem a barra de status
+		statusbar = new JLabel("isso é por default");
+		add (statusbar, BorderLayout.SOUTH);
+		
+		// o objeto de MouseListener será um objeto da classe Mouseclass() 
+		addMouseListener (new Mouseclass());
+		
+	}
+	
+	// agora, cria-se a classe Mouseclass, que extende MouseAdapter, que já está no Java
+	// é exatamente a classe MouseAdapter que permite override só o que você quer override
+	
+	private class Mouseclass extends MouseAdapter{
+	
+		// as linhas abaixo selecionarão qual é o evento escolhido e a reação ao evento
+		public void mouseClicked (MouseEvent event) {
+			detalhes = String.format("Você clicou %d", event.getClickCount());
+			
+			// as condicionais abaixo se referem a distintos tipos de mouse
+			
+			if(event.isMetaDown())
+				detalhes += "com o botão direito";
+			
+			else if (event.isAltDown())
+				detalhes += "com botão do centro";
+			
+			else
+				detalhes += "com botão da esquerda";
+				
+			statusbar.setText(detalhes);
+		}	
+	}	
+  
+  // classe principal abaixo
+  
+  	import javax.swing.JFrame;
+		
+	public class apples {
+		public static void main (String []args) {
+			
+			Gui go = new Gui();
+			go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			go.setSize(300,200);
+			go.setVisible(true);
+		}
+	
+	}
+
+}	
+
+classe
