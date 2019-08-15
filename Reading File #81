@@ -1,0 +1,66 @@
+//seguindo thenewboston, aula #81
+// lendo um arquivo de texto a partir do Eclipse
+
+// classe principal abaixo
+
+
+class apples {
+		public static void main (String []args) {
+		
+			// instancindo a classe createfile e a construindo
+			readfile r = new readfile();
+			
+			// agora, chama-se os três métodos de createfile
+			r.OpenFile();
+			r.readFile();
+			r.closeFile();
+		}
+}
+
+// classe readfile abaixo
+
+import java.io.*;
+import java.util.*;
+
+public class readfile {
+
+	private Scanner vidente;
+	
+	//método para abrir um arquivo
+	public void OpenFile() {
+		try {
+			
+      // ao invés de ler do teclado, o Scanner vidente lerá do arquivo apontado
+      vidente = new Scanner (new File("C:\\Users\\Lenovo G40\\Documents\\exercícios de programação\\Te_Formatei2.txt"));
+		}
+		
+		catch (Exception e) {
+			System.out.println("houve um erro");
+		}
+	}
+	
+	//o método abaixo lÊ o arquivo
+	public void readFile() {
+		
+		// cria-se um loop while para ler o arquivo até o final
+		while (vidente.hasNext()) {
+			String a = vidente.next();
+			String b = vidente.next();
+			String c = vidente.next();
+			
+			System.out.printf("%s %s %s\n", a, b, c);
+		}
+	}
+	
+	// o método abaixo fecha o arquivo
+	public void closeFile() {
+		vidente.close();
+	}
+	
+}
+
+// output
+93 ganhamos Paulistão
+94 ganhamos brasileiro
+95 perdemos paulistão
+96 perdemos CdBrasil
