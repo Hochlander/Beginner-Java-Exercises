@@ -1,0 +1,41 @@
+//seguindo the new boston, Java for beginners, aula # 82
+
+// faz-se uma calculadora de divisão que recomeça o programa sempre que o divisor =0.
+// try-catch identifica o erro, e
+// do-while repete a operação até que não haja erro
+// uma falha nesse programa é que ele não handles o erro de inserir uma letra no lugar de algum dos números
+
+import java.util.*;
+
+class apples {
+		public static void main (String []args) {
+		
+		
+			// implementando o Scanner
+			Scanner vidente = new Scanner(System.in);
+			
+			// a integer abaixo é ferramenta para o do-while loop
+			int x = 1;
+			
+			// cria-se o do-while loop, que repetirá o try-catch sempre que a operação der erro
+			do {
+			// o arranjo try-catch é o recurso para gerir erros
+			try {
+				System.out.println("digite o primeiro número: ");
+				int n1 = vidente.nextInt();
+				System.out.println("digite o segundo número: ");
+				int n2 = vidente.nextInt();
+				int divida = n1/n2;
+				System.out.println(divida);
+				
+				// se tudo for bem até aqui, podemos encerrar o do-whil loop
+				// para isso, iguala-se x a qq coisa diferente de 1
+				x=2;
+			}
+			
+			catch (Exception e) {
+				System.out.println("assim não pode!");
+			}
+			}while(x==1);
+		}
+}
