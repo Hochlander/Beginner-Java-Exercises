@@ -1,0 +1,92 @@
+// seguindo thenew boston java for beginners, aula #76
+
+// classe secundária abaixo
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Gui extends JFrame {
+	
+	// o JPanel reagirá a comando vindos do mouse
+		
+	// JPanel cria a caixa/janela; JLabel cria a barra de status que vai ficar embaixo
+	private JPanel mousepanel;
+	private JLabel statusbar;
+	
+	
+	// é a hora de construir a janela
+	public Gui() {
+		
+		// a linha abaixo chama a superclasse JFrame e cria o título
+		super ("The Title");
+		
+		// as linhas abaixo definem o background
+		mousepanel = new JPanel();
+		
+		// branco como cor default
+		mousepanel.setBackground(Color.WHITE);
+		
+		// posicionando no centro
+		add(mousepanel, BorderLayout.CENTER);
+		
+		//as linhas abaixo definem a barra de status
+		
+		statusbar = new JLabel("default");
+		add (statusbar, BorderLayout.SOUTH);
+		
+		// criando a Handlerclass
+		Handlerclass handler = new Handlerclass();
+		mousepanel.addMouseListener(handler);
+		mousepanel.addMouseMotionListener(handler);
+		
+	}
+	
+	// implement significa que tem-se que usar todos os métodos das interfaces implementadas
+	// interfaces são classes, em essência
+	private class Handlerclass implements MouseListener, MouseMotionListener{
+		
+		// click significa um clique rápido; diferente de clicar e segurar (press and release)
+		public void mouseClicked(MouseEvent event) {
+			statusbar.setText(String.format("você clicou nas coordenadas %d, %d", event.getX(), event.getY()));
+		}
+		public void MousePressed(MouseEvent event) {
+			statusbar.setText("você apertou o mouse");
+		}
+		public void mouseReleased(MouseEvent event) {
+			statusbar.setText("você soltou o mouse");
+		}
+		public void mouseEntered(MouseEvent event) {
+			statusbar.setText("você entrou na área");
+			mousepanel.setBackground(Color.RED);
+		}
+		public void mouseExited(MouseEvent event) {
+			statusbar.setText("você saiu da área");
+			mousepanel.setBackground(Color.WHITE);
+		}
+		// o método acima fooi o último de "MouseListener"
+		// abaixo, virão os métodos de "MouseMotionListener"
+		
+		public void mouseDragged (MouseEvent event) {
+			statusbar.setText("você está arrastando o mouse");
+		}
+		public void mouseMoved (MouseEvent event) {
+			statusbar.setText("você mexeu o mouse");
+		}
+	}
+}
+
+// classe principal abaixo
+
+import javax.swing.JFrame;
+	
+public class apples {
+	public static void main (String []args) {
+		
+		Gui go = new Gui();
+		go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		go.setSize(300,200);
+		go.setVisible(true);
+	}
+
+}
+
