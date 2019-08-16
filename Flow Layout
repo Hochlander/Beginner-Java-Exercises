@@ -1,0 +1,78 @@
+// seguindo thenewboston #83
+
+// classe com o JFrame abaixo
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Layout extends JFrame {
+	private JButton esquerda;
+	private JButton centro;
+	private JButton direita;
+	
+	private FlowLayout layout;
+	private Container container;
+	
+	//construtor abaixo
+	public Layout() {
+		super("título");
+		layout = new FlowLayout();
+		container = getContentPane();
+		setLayout(layout);
+		
+		// o construtor criou a janela. Daqui prabaixo, se colocrá coisas na janela
+		
+		esquerda = new JButton("esquerda");
+		add(esquerda);
+		esquerda.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					layout.setAlignment(FlowLayout.LEFT);
+					
+					// a linha abaixo rearranja tudo dependendo de como o Layout está definido
+					layout.layoutContainer(container);
+				}
+			}
+				);
+		centro = new JButton("centro");
+		add(centro);
+		centro.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					layout.setAlignment(FlowLayout.CENTER);
+					
+					// a linha abaixo rearranja tudo dependendo de como o Layout está definido
+					layout.layoutContainer(container);
+				}
+			}
+				);
+		direita = new JButton("direita");
+		add(direita);
+		direita.addActionListener(
+			new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					layout.setAlignment(FlowLayout.RIGHT);
+					
+					// a linha abaixo rearranja tudo dependendo de como o Layout está definido
+					layout.layoutContainer(container);
+				}
+			}
+				);
+	}
+
+}
+
+// classe principal abaixo
+
+import javax.swing.*;
+
+class apples {
+		public static void main (String []args) {
+		
+			Layout l = new Layout();
+			l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			l.setSize(300,100);
+			l.setVisible(true);
+		}
+}
