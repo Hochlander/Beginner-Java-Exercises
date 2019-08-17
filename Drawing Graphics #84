@@ -1,0 +1,49 @@
+// seguindo thenewboston #84; fazendo desenhos com o JAva
+
+// classe com o gráfico abaixo
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Fish extends JPanel {
+
+	public void paintComponent(Graphics g) {
+		
+		// super é a forma de chamar a super-classe
+		super.paintComponent(g);
+		this.setBackground(Color.WHITE);
+		
+		// agora, define-se a om com que se desenhará sobre o background branco
+		g.setColor(Color.BLUE);
+		
+		// desenhando um retângulo na tela
+		g.fillRect(25, 25, 100, 30);
+		
+		// desenhando novo retÂngulo; fillRect preenche o interior do retângulo
+		g.setColor(new Color (132, 32, 232));
+		g.fillRect(25, 65, 100, 30);
+		
+		
+		//escrevendo um texto na tela
+		g.setColor(Color.RED);
+		g.drawString("isso é um texto", 25, 120);
+	}
+
+}
+
+//classe principal abaixo
+
+import javax.swing.*;
+
+class apples {
+		public static void main (String []args) {
+		
+			JFrame f = new JFrame();
+			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Fish balito = new Fish();
+			f.add(balito);
+			f.setSize(400, 250);
+			f.setVisible(true);
+		}
+}
