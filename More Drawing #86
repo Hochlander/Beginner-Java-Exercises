@@ -1,0 +1,53 @@
+//seguindo thenewboston #86
+// aprendendo a desenhar formas com Java
+
+// classe com os desenhos abaixo
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Fish extends JPanel {
+
+	// paint component pra poder pintar coisas na tela
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		this.setBackground(Color.WHITE);
+		
+		g.setColor(Color.BLUE);
+		g.drawLine(10, 25, 200, 45);
+		
+		g.setColor(Color.RED);
+		// drawRect produz um retângulo não-preenchido
+		g.drawRect(10, 55, 100, 30);
+		
+		//fazendo ovais
+		g.setColor(Color.GREEN);
+		g.fillOval(10, 95, 100, 30);
+		
+		// retÂngulo 3d
+		g.setColor(Color.ORANGE);
+		g.fill3DRect(10, 160, 100, 50, true);
+	
+	
+	}
+
+}
+
+// classe principal abaixo
+import java.awt.Color;
+
+import javax.swing.*;
+
+class apples {
+		public static void main (String []args) {
+		
+			JFrame f = new JFrame();
+			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Fish balito = new Fish();
+			balito.setBackground(Color.WHITE);
+			f.add(balito);
+			f.setSize(500, 250);
+			f.setVisible(true);
+		}
+}
