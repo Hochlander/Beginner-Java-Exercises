@@ -1,0 +1,53 @@
+// seguind thenewboston, aula #85
+// usando o JColor Chooser para alterar a cor de backgroung de uma janela
+
+// classe única abaixo
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Fish extends JFrame {
+
+	private JButton b;
+	private Color cor;
+	private JPanel painel;
+	
+	// construtor abaixo
+	
+	
+	public Fish() {
+		super ("título");
+		painel = new JPanel();
+		
+		painel.setBackground(cor);
+		
+		b = new JButton("escolha uma cor:  ");
+		b.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						
+						
+						// JColorChooser permite o usuário escolher a cor. 
+						// é um painel built-in do java
+						cor = JColorChooser.showDialog(null, "escolha sua cor", cor);
+						
+						// se o usuário não escolher nada, a cor por default é branco
+						if(cor==null)
+							cor=(Color.WHITE);
+						
+						// mudando a cor do Background
+						painel.setBackground(cor);
+					}
+				}
+				);
+		
+		add(painel, BorderLayout.CENTER);
+		add(b, BorderLayout.SOUTH);
+		setSize(450, 150);
+		setVisible(true); 
+		
+		
+	}
+
+}
