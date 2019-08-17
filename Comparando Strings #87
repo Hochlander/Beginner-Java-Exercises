@@ -1,0 +1,39 @@
+// seguindo thenewboston, #87, comparando Strings
+// não usa-se o "==", mas sim o a.equals(b)
+// confira abaixo
+
+
+
+public class apples {
+		public static void main (String []args) {
+		
+			String a = "mamonas";
+			String b = "balito";
+			String c = "BALITO";
+			
+			// comparando Strings
+			
+			if (a.equals("mamonas")) {
+				System.out.println("mamo-na-na-nas");
+			}else {
+					System.out.println("não é igual!");
+			}
+			
+			if (b.equals(c)) {
+				System.out.println("são iguais");
+			}else {
+					System.out.println("não é igual!");
+			}
+			if (b.equalsIgnoreCase(c)) {
+				System.out.println("são iguais");
+			}else {
+					System.out.println("não é igual!");
+			}
+			}
+			
+}
+
+// output
+mamo-na-na-nas
+não é igual!
+são iguais
